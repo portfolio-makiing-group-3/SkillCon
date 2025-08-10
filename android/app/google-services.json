@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "684745145765",
+    "project_id": "skillcon-9f4d8",
+    "storage_bucket": "skillcon-9f4d8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684745145765:android:77c6beeb1d4bae90e8fc4c",
+        "android_client_info": {
+          "package_name": "com.example.skillcon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmpH9wJIKBPGl02dNWYYH1dOcNWhnT_F0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
