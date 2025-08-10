@@ -2,6 +2,8 @@
 class Assets {
   Assets._();
 
+  static const String assets1 = 'lib/assets/branding.svg';
+  static const String assets2 = 'lib/assets/applogo.svg';
   static const String assetsGoogleLogo = 'lib/assets/google_logo.png';
   static const String authAuthManager = 'lib/auth/auth_manager.dart';
   static const String generatedAssets = 'lib/generated/assets.dart';
