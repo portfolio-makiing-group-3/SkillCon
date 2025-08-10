@@ -60,6 +60,7 @@ class AuthService {
       Fluttertoast.showToast(msg: "Login successful");
     } catch (e) {
       Fluttertoast.showToast(msg: e.toString());
+      rethrow; // <---- add this line to propagate the error up
     }
   }
 

@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:skillcon/screens/analyze.dart'; // Import AnalyzeScreen
 import 'package:skillcon/screens/forums.dart';
+import 'package:skillcon/screens/login_screen.dart';
 import 'package:skillcon/screens/maps.dart';
 import 'package:skillcon/screens/resume.dart';
 import 'package:skillcon/screens/roadmap.dart';
@@ -72,6 +76,10 @@ class _HomeScreenState extends State<HomeScreen> {
     // You can add other pages if needed here later
   ];
 
+  List<dynamic> _jobData = [];
+  List<dynamic> _searchResults = [];
+  bool _showSearchResults = false;
+
   Future<void> _loadUserName() async {
     final currentUser = authService.currentUser;
     if (currentUser == null) return;
@@ -87,10 +95,22 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  Future<void> _loadJobData() async {
+    final jsonString = await rootBundle.loadString(
+      'lib/dataset/job_dataset.json',
+    );
+    setState(() {
+      _jobData = json.decode(jsonString);
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     _loadUserName();
+    _loadJobData();
+
+    searchController.addListener(_onSearchChanged);
   }
 
   void _navigateToAnalyze(String mode) {
@@ -114,6 +134,86 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  void _onSearchChanged() {
+    final query = searchController.text.toLowerCase();
+    if (query.isEmpty) {
+      setState(() {
+        _searchResults = [];
+        _showSearchResults = false;
+      });
+      return;
+    }
+
+    List<dynamic> matches = [];
+    for (var job in _jobData) {
+      final jobTitle = (job['job'] ?? '').toString().toLowerCase();
+      final skills = List<String>.from(
+        job['skillset'] ?? [],
+      ).map((s) => s.toLowerCase()).toList();
+
+      if (jobTitle.contains(query) ||
+          skills.any((skill) => skill.contains(query))) {
+        matches.add(job);
+      }
+    }
+
+    setState(() {
+      _searchResults = matches;
+      _showSearchResults = true;
+    });
+  }
+
+  void _onJobTap(dynamic job) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        final primaryColor = Colors.blue.shade700;
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          title: Text(
+            job['job'],
+            style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+          ),
+          content: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Place: ${job['place']}'),
+                const SizedBox(height: 8),
+                Text(
+                  'Description:',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(job['description']),
+                const SizedBox(height: 8),
+                Text(
+                  'Skillset:',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Wrap(
+                  spacing: 6,
+                  children: (job['skillset'] as List<dynamic>)
+                      .map((skill) => Chip(label: Text(skill)))
+                      .toList(),
+                ),
+                const SizedBox(height: 8),
+                Text('Salary Range: ${job['salary-range']}'),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final primaryColor = Colors.blue.shade700;
@@ -131,9 +231,44 @@ class _HomeScreenState extends State<HomeScreen> {
         leading: IconButton(
           icon: const Icon(Icons.menu, color: Colors.black87),
           onPressed: () {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(const SnackBar(content: Text('Menu pressed')));
+            showModalBottomSheet(
+              context: context,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+              ),
+              builder: (BuildContext context) {
+                return Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Wrap(
+                    children: [
+                      ListTile(
+                        leading: const Icon(Icons.logout, color: Colors.red),
+                        title: const Text('Logout'),
+                        onTap: () async {
+                          Navigator.of(context).pop(); // close the sheet first
+
+                          // Optionally perform logout logic here
+                          // e.g., await authService.logout();
+
+                          // Then navigate to LoginScreen
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (_) => LoginScreen()),
+                          );
+                        },
+                      ),
+                      ListTile(
+                        leading: const Icon(Icons.cancel),
+                        title: const Text('Cancel'),
+                        onTap: () {
+                          Navigator.of(context).pop(); // just close the sheet
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
           },
         ),
       ),
@@ -152,22 +287,55 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 18),
-              TextField(
-                controller: searchController,
-                decoration: InputDecoration(
-                  hintText: 'Search jobs, roadmaps, forums...',
-                  prefixIcon: Icon(Icons.search, color: primaryColor),
-                  filled: true,
-                  fillColor: Colors.grey.shade100,
-                  contentPadding: const EdgeInsets.symmetric(
-                    vertical: 0,
-                    horizontal: 20,
+              // Search field + dropdown results
+              Column(
+                children: [
+                  TextField(
+                    controller: searchController,
+                    decoration: InputDecoration(
+                      hintText: 'Search jobs, roadmaps, forums...',
+                      prefixIcon: Icon(Icons.search, color: primaryColor),
+                      filled: true,
+                      fillColor: Colors.grey.shade100,
+                      contentPadding: const EdgeInsets.symmetric(
+                        vertical: 0,
+                        horizontal: 20,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(35),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(35),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
+                  if (_showSearchResults)
+                    Container(
+                      margin: const EdgeInsets.only(top: 8),
+                      constraints: const BoxConstraints(maxHeight: 300),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 6,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: _searchResults.length,
+                        itemBuilder: (context, index) {
+                          final job = _searchResults[index];
+                          return ListTile(
+                            title: Text(job['job']),
+                            subtitle: Text(job['place']),
+                            onTap: () => _onJobTap(job),
+                          );
+                        },
+                      ),
+                    ),
+                ],
               ),
               const SizedBox(height: 32),
               GridView.count(

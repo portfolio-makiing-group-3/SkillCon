@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../service/auth_service.dart';
@@ -34,14 +35,31 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     try {
-      await authService.login(emailController.text, passwordController.text);
+      // Await login, should throw if credentials are invalid
+      await authService.login(
+        emailController.text.trim(),
+        passwordController.text,
+      );
 
       if (!mounted) return;
+      // If login successful, navigate to HomeScreen
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (_) => const HomeScreen()),
       );
+    } on FirebaseAuthException catch (e) {
+      // Catch Firebase-specific auth errors
+      setState(() {
+        if (e.code == 'user-not-found') {
+          _errorMessage = "No user found for that email.";
+        } else if (e.code == 'wrong-password') {
+          _errorMessage = "Wrong password provided.";
+        } else {
+          _errorMessage = e.message ?? "Authentication failed.";
+        }
+      });
     } catch (e) {
+      // General error handler
       setState(() {
         _errorMessage = e.toString();
       });
