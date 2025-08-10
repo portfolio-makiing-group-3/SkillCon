@@ -1,0 +1,379 @@
+[
+  {
+    "job": "Janitor",
+    "place": "Manila",
+    "longitude": 120.9842,
+    "latitude": 14.5995,
+    "description": "Must have experience in cleaning offices or public spaces and be able to work early morning shifts.",
+    "skillset": [
+      "Cleaning",
+      "Time management",
+      "Attention to detail"
+    ],
+    "salary-range": "PHP 17,000 - PHP 20,000 per month"
+  },
+  {
+    "job": "Warehouse Loader",
+    "place": "Cebu City",
+    "longitude": 123.8854,
+    "latitude": 10.3157,
+    "description": "Must be physically fit and able to lift heavy packages in a warehouse setting.",
+    "skillset": [
+      "Physical strength",
+      "Teamwork",
+      "Basic safety knowledge"
+    ],
+    "salary-range": "PHP 23,000 - PHP 27,000 per month"
+  },
+  {
+    "job": "Construction Helper",
+    "place": "Davao City",
+    "longitude": 125.4553,
+    "latitude": 7.1907,
+    "description": "Must be physically fit and able to lift at least 25 kg daily.",
+    "skillset": [
+      "Physical strength",
+      "Teamwork",
+      "Basic tool handling"
+    ],
+    "salary-range": "PHP 24,000 - PHP 28,000 per month"
+  },
+  {
+    "job": "Cashier",
+    "place": "Quezon City",
+    "longitude": 121.0437,
+    "latitude": 14.676,
+    "description": "Must be good at handling money and able to work on weekends and holidays.",
+    "skillset": [
+      "Basic math",
+      "Customer service",
+      "Accuracy"
+    ],
+    "salary-range": "PHP 20,000 - PHP 24,000 per month"
+  },
+  {
+    "job": "Farm Worker",
+    "place": "Nueva Ecija",
+    "longitude": 120.9817,
+    "latitude": 15.602,
+    "description": "Must be willing to work outdoors under hot weather and have experience with planting or harvesting.",
+    "skillset": [
+      "Physical stamina",
+      "Basic farming knowledge",
+      "Reliability"
+    ],
+    "salary-range": "PHP 20,000 - PHP 25,000 per month"
+  },
+  {
+    "job": "Waiter/Waitress",
+    "place": "Taguig",
+    "longitude": 121.0509,
+    "latitude": 14.5176,
+    "description": "Must have good communication skiolls and be willing to work night shifts.",
+    "skillset": [
+      "Customer service",
+      "Communication skills",
+      "Multi-tasking"
+    ],
+    "salary-range": "PHP 19,000 - PHP 23,000 per month"
+  },
+  {
+    "job": "Security Guard",
+    "place": "Pasig City",
+    "longitude": 121.0851,
+    "latitude": 14.5764,
+    "description": "Must have a valid security license and be willing to work rotating shifts.",
+    "skillset": [
+      "Alertness",
+      "Basic first aid",
+      "Observation skills"
+    ],
+    "salary-range": "PHP 24,000 - PHP 28,000 per month"
+  },
+  {
+    "job": "Housekeeper",
+    "place": "Baguio City",
+    "longitude": 120.596,
+    "latitude": 16.4023,
+    "description": "Must have at least 1 year of experience in housekeeping or hotel cleaning.",
+    "skillset": [
+      "Cleaning",
+      "Organization skills",
+      "Time management"
+    ],
+    "salary-range": "PHP 17,000 - PHP 20,000 per month"
+  },
+  {
+    "job": "Factory Worker",
+    "place": "Meycauayan, Bulacan",
+    "longitude": 120.95,
+    "latitude": 14.7333,
+    "description": "Must be able to stand for long hours and follow strict safety guidelines.",
+    "skillset": [
+      "Attention to detail",
+      "Teamwork",
+      "Basic safety knowledge"
+    ],
+    "salary-range": "PHP 23,000 - PHP 27,000 per month"
+  },
+  {
+    "job": "Merchandiser",
+    "place": "Iloilo City",
+    "longitude": 122.5621,
+    "latitude": 10.7202,
+    "description": "Must be able to arrange heavy products and work in a fast-paced retail environment.",
+    "skillset": [
+      "Organization skills",
+      "Product knowledge",
+      "Customer service"
+    ],
+    "salary-range": "PHP 19,000 - PHP 23,000 per month"
+  },
+  {
+    "job": "Food Stall Assistant",
+    "place": "Zamboanga City",
+    "longitude": 122.079,
+    "latitude": 6.9214,
+    "description": "Must have basic food handling skills and be willing to work long hours outdoors.",
+    "skillset": [
+      "Food preparation",
+      "Customer service",
+      "Money handling"
+    ],
+    "salary-range": "PHP 13,000 - PHP 20,000 per month"
+  },
+  {
+    "job": "Laundry Attendant",
+    "place": "Calamba, Laguna",
+    "longitude": 121.1653,
+    "latitude": 14.2117,
+    "description": "Must know how to operate washing and drying machines and handle delicate fabrics.",
+    "skillset": [
+      "Laundry machine operation",
+      "Attention to detail",
+      "Time management"
+    ],
+    "salary-range": "PHP 15,000 - PHP 19,000 per month"
+  },
+  {
+    "job": "Parking Attendant",
+    "place": "Antipolo",
+    "longitude": 121.1245,
+    "latitude": 14.6255,
+    "description": "Must be able to guide vehicles and maintain accurate parking records.",
+    "skillset": [
+      "Customer service",
+      "Observation skills",
+      "Basic record-keeping"
+    ],
+    "salary-range": "PHP 15,000 - PHP 19,000 per month"
+  },
+  {
+    "job": "Car Wash Attendant",
+    "place": "San Fernando, Pampanga",
+    "longitude": 120.6833,
+    "latitude": 15.0333,
+    "description": "Must have experience in washing and detailing vehicles efficiently.",
+    "skillset": [
+      "Attention to detail",
+      "Physical stamina",
+      "Customer service"
+    ],
+    "salary-range": "PHP 15,000 - PHP 19,000 per month"
+  },
+  {
+    "job": "Bagger",
+    "place": "Bacolod City",
+    "longitude": 122.9509,
+    "latitude": 10.6765,
+    "description": "Must be quick and careful when packing grocery items.",
+    "skillset": [
+      "Customer service",
+      "Organization skills",
+      "Speed"
+    ],
+    "salary-range": "PHP 14,000 - PHP 17,000 per month"
+  },
+  {
+    "job": "Gardener",
+    "place": "Tagaytay",
+    "longitude": 120.932,
+    "latitude": 14.1001,
+    "description": "Must have knowledge in plant care and be able to operate garden tools.",
+    "skillset": [
+      "Plant care",
+      "Tool handling",
+      "Physical stamina"
+    ],
+    "salary-range": "PHP 15,000 - PHP 19,000 per month"
+  },
+  {
+    "job": "Tricycle Driver",
+    "place": "General Santos City",
+    "longitude": 125.1716,
+    "latitude": 6.1164,
+    "description": "Must have a valid driver’s license and be familiar with local routes.",
+    "skillset": [
+      "Driving skills",
+      "Navigation skills",
+      "Customer service"
+    ],
+    "salary-range": "PHP 18,000 - PHP 25,000 per month"
+  },
+  {
+    "job": "Street Sweeper",
+    "place": "Olongapo City",
+    "longitude": 120.2828,
+    "latitude": 14.8292,
+    "description": "Must be willing to work outdoors early in the morning and handle cleaning tools.",
+    "skillset": [
+      "Physical stamina",
+      "Attention to detail",
+      "Time management"
+    ],
+    "salary-range": "PHP 13,000 - PHP 17,000 per month"
+  },
+  {
+    "job": "Packer",
+    "place": "Cagayan de Oro",
+    "longitude": 124.6319,
+    "latitude": 8.4542,
+    "description": "Must be able to pack products neatly and work quickly under pressure.",
+    "skillset": [
+      "Organization skills",
+      "Attention to detail",
+      "Speed"
+    ],
+    "salary-range": "PHP 16,000 - PHP 20,000 per month"
+  },
+  {
+    "job": "Helper (Household/Shop)",
+    "place": "Batangas City",
+    "longitude": 121.0583,
+    "latitude": 13.7565,
+    "description": "Must be flexible in doing household chores or assisting with store tasks.",
+    "skillset": [
+      "Adaptability",
+      "Basic cleaning",
+      "Customer service"
+    ],
+    "salary-range": "PHP 13,000 - PHP 17,000 per month"
+  },
+  {
+    "job": "Barista",
+    "place": "Makati City",
+    "longitude": 121.0244,
+    "latitude": 14.5547,
+    "description": "Must have basic coffee preparation skills and good customer service attitude.",
+    "skillset": [
+      "Beverage preparation",
+      "Customer service",
+      "Multi-tasking"
+    ],
+    "salary-range": "PHP 18,000 - PHP 22,000 per month"
+  },
+  {
+    "job": "Dishwasher",
+    "place": "Navotas",
+    "longitude": 120.95,
+    "latitude": 14.6667,
+    "description": "Must be able to work quickly in cleaning kitchenware during busy hours.",
+    "skillset": [
+      "Speed",
+      "Attention to detail",
+      "Physical stamina"
+    ],
+    "salary-range": "PHP 15,000 - PHP 19,000 per month"
+  },
+  {
+    "job": "Toll Booth Attendant",
+    "place": "Tarlac City",
+    "longitude": 120.5976,
+    "latitude": 15.4802,
+    "description": "Must be able to handle money accurately and work in shifts.",
+    "skillset": [
+      "Basic math",
+      "Customer service",
+      "Accuracy"
+    ],
+    "salary-range": "PHP 20,000 - PHP 24,000 per month"
+  },
+  {
+    "job": "Bakery Assistant",
+    "place": "Lucena City",
+    "longitude": 121.6172,
+    "latitude": 13.9314,
+    "description": "Must assist in bread preparation and maintain cleanliness in the baking area.",
+    "skillset": [
+      "Food preparation",
+      "Cleaning",
+      "Teamwork"
+    ],
+    "salary-range": "PHP 18,000 - PHP 22,000 per month"
+  },
+  {
+    "job": "Porter",
+    "place": "Legazpi City",
+    "longitude": 123.7438,
+    "latitude": 13.1391,
+    "description": "Must be physically fit to carry heavy loads and assist customers with luggage.",
+    "skillset": [
+      "Physical strength",
+      "Customer service",
+      "Time management"
+    ],
+    "salary-range": "PHP 23,000 - PHP 27,000 per month"
+  },
+  {
+    "job": "Street Food Cook",
+    "place": "Dumaguete City",
+    "longitude": 123.3054,
+    "latitude": 9.307,
+    "description": "Must know how to prepare and cook street food safely and efficiently.",
+    "skillset": [
+      "Cooking skills",
+      "Food safety",
+      "Customer service"
+    ],
+    "salary-range": "PHP 18,000 - PHP 22,000 per month"
+  },
+  {
+    "job": "Pet Grooming Assistant",
+    "place": "Puerto Princesa",
+    "longitude": 118.7353,
+    "latitude": 9.7392,
+    "description": "Must be comfortable handling animals and assisting in pet grooming.",
+    "skillset": [
+      "Animal care",
+      "Attention to detail",
+      "Patience"
+    ],
+    "salary-range": "PHP 17,000 - PHP 20,000 per month"
+  },
+  {
+    "job": "Call Center Trainee",
+    "place": "Ortigas Center",
+    "longitude": 121.0614,
+    "latitude": 14.5869,
+    "description": "Must have basic English communication skills and willingness to learn customer support procedures.",
+    "skillset": [
+      "Communication skills",
+      "Basic computer skills",
+      "Problem-solving"
+    ],
+    "salary-range": "PHP 20,000 - PHP 24,000 per month"
+  },
+  {
+    "job": "Market Stall Helper",
+    "place": "Marikina City",
+    "longitude": 121.1029,
+    "latitude": 14.6507,
+    "description": "Must assist in arranging products, handling sales, and keeping the stall clean.",
+    "skillset": [
+      "Sales skills",
+      "Customer service",
+      "Organization skills"
+    ],
+    "salary-range": "PHP 14,000 - PHP 18,000 per month"
+  }
+]

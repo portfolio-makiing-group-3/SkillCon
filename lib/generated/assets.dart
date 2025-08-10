@@ -2,24 +2,37 @@
 class Assets {
   Assets._();
 
-  static const String assets1 = 'lib/assets/branding.svg';
-  static const String assets2 = 'lib/assets/applogo.svg';
+  static const String assetsApplogo = 'lib/assets/applogo.png';
+  static const String assetsBranding = 'lib/assets/branding.png';
   static const String assetsGoogleLogo = 'lib/assets/google_logo.png';
   static const String authAuthManager = 'lib/auth/auth_manager.dart';
+  static const String datasetJobDataset = 'lib/dataset/job_dataset.json';
   static const String generatedAssets = 'lib/generated/assets.dart';
   static const String libFirebaseOptions = 'lib/firebase_options.dart';
   static const String libMain = 'lib/main.dart';
+  static const String modelsGeminiModel = 'lib/models/gemini_model.dart';
   static const String providerAuthProvider = 'lib/provider/auth_provider.dart';
+  static const String screensAnalyze = 'lib/screens/analyze.dart';
   static const String screensDashboardPage = 'lib/screens/dashboard_page.dart';
   static const String screensForgotPasswordScreen =
       'lib/screens/forgot_password_screen.dart';
+  static const String screensForums = 'lib/screens/forums.dart';
   static const String screensHomePage = 'lib/screens/home_page.dart';
   static const String screensLoginScreen = 'lib/screens/login_screen.dart';
+  static const String screensMaps = 'lib/screens/maps.dart';
   static const String screensNewPassword = 'lib/screens/new_password.dart';
+  static const String screensResume = 'lib/screens/resume.dart';
+  static const String screensResumeAnalysisResult =
+      'lib/screens/resume_analysis_result.dart';
+  static const String screensRoadmap = 'lib/screens/roadmap.dart';
   static const String screensSignupScreen = 'lib/screens/signup_screen.dart';
+  static const String screensStamp = 'lib/screens/stamp.dart';
   static const String screensUserInfo = 'lib/screens/user_info.dart';
   static const String screensWelcomePage = 'lib/screens/welcome_page.dart';
   static const String serviceAuthService = 'lib/service/auth_service.dart';
+  static const String skillCon = '.env';
+  static const String utilsTextRecognition = 'lib/utils/text_recognition.dart';
+  static const String widgetsCustomAppbar = 'lib/widgets/custom_appbar.dart';
   static const String widgetsCustomButton = 'lib/widgets/custom_button.dart';
   static const String widgetsCustomTextfield =
       'lib/widgets/custom_textfield.dart';

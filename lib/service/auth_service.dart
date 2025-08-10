@@ -1,15 +1,18 @@
-import 'package:cloud_firestore/cloud_firestore.dart'; // <-- Add this import
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
-  final FirebaseFirestore _firestore =
-      FirebaseFirestore.instance; // <-- Firestore instance
 
-  /// Register a new user with email and password
+  // Add scopes here if needed
+  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
+
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  User? get currentUser => _auth.currentUser;
+
   Future<void> registerUser(String email, String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(
@@ -22,7 +25,6 @@ class AuthService {
     }
   }
 
-  /// Register user with extra info (name, phone, dob)
   Future<void> registerUserWithDetails({
     required String email,
     required String password,
@@ -34,7 +36,6 @@ class AuthService {
       UserCredential userCredential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);
 
-      // Save additional user info to Firestore
       await _firestore.collection('users').doc(userCredential.user!.uid).set({
         'name': name,
         'phone': phone,
@@ -49,12 +50,10 @@ class AuthService {
     }
   }
 
-  /// Sign up (alias for registerUser)
   Future<void> signUp(String email, String password) async {
     await registerUser(email, password);
   }
 
-  /// Login with email and password
   Future<void> login(String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
@@ -64,7 +63,6 @@ class AuthService {
     }
   }
 
-  /// Send password reset link to email
   Future<void> resetPassword(String email) async {
     try {
       await _auth.sendPasswordResetEmail(email: email);
@@ -74,21 +72,26 @@ class AuthService {
     }
   }
 
-  /// Sign out from all sessions
   Future<void> signOut() async {
     await _auth.signOut();
+    await _googleSignIn.signOut(); // Also sign out from Google
   }
 
-  /// Sign in using Google account
   Future<void> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
-        throw Exception('Google sign-in aborted');
+        Fluttertoast.showToast(msg: "Google sign-in aborted");
+        return;
       }
 
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
+
+      if (googleAuth.accessToken == null || googleAuth.idToken == null) {
+        Fluttertoast.showToast(msg: "Missing Google Auth Token");
+        return;
+      }
 
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,

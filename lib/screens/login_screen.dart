@@ -98,20 +98,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 10),
 
-                    const Center(
-                      child: Text(
-                        'SkillCon',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    Center(
+                      child: Image.asset(
+                        'lib/assets/branding.png',
+                        height:
+                            180, // adjust this height to roughly match the text size
+                        fit: BoxFit.contain,
                       ),
                     ),
 
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 10),
 
                     const Text(
                       'Sign In',
